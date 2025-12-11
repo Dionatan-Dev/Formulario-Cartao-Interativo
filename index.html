@@ -9,7 +9,7 @@
 <body>
   <main>
     <img src="images/bg-main-desktop.png" alt="" class="img-fundo">
-    <div class="frente-card">
+    <section class="frente-card">
       <div class="info-card">
         <img src="images/bg-card-front.png" alt="">
         <img src="images/card-logo.svg" alt="" class="logo-card">
@@ -17,7 +17,7 @@
         <p class="nome-card">SEU NOME</p>
         <p class="valid-card">00/00</p>
       </div>
-    </div>
+    </section>
     <div class="tras-card">
       <div class="info-card">
         <img src="images/bg-card-back.png" alt="">
@@ -27,9 +27,27 @@
 
     </div>
     <section class="lateral">
-      <div>
+      <div class="form-container">
         <form action="">
+          <label for="">NOME NO CARTÃO</label>
+          <input type="text" name="" id="" placeholder="ex: João da Silva">
+          <label for="">NÚMERO DO CARTÃO</label>
+          <input type="text" placeholder="ex: 1234 5678 9012 3456">
+          <div class="inputs-bottom">
+            <div class="valid-sect">
+              <label>VALIDADE (MM/AA)</label>
+              <div class="validade">
+                <input type="number" name="" id="" placeholder="MM">
+                <input type="number" name="" id="" placeholder="AA">
+              </div>
+            </div>
+            <div class="cvv-sect">
+              <label for="">CVC</label>
+              <input type="number" name="" id="" placeholder="ex: 123">
+            </div>
 
+          </div>
+          <input class="botao-confirm" type="button" value="CONFIRMAR">
         </form>
       </div>
     </section>
