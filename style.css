@@ -1,138 +1,183 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
-:root{
-    --text-card: whitesmoke;
+:root {
+  --text-card: #f5f5f5;
+  --form-bg: #faf7ef;
 }
 
-body{
-    height: 100vh;
+/* LAYOUT GERAL COM GRID */
+.layout {
+  display: grid;
+  grid-template-columns: 30vw 1fr;
+  min-height: 100vh;
 }
 
-main{
-    display: grid;
-    grid-template-columns: 30vw 1fr;
-    position: relative;
+/* LATERAL (IMAGEM + CARTÕES) */
+.sidebar {
+  position: relative;
+  background-image: url(images/bg-main-desktop.png);
 }
 
-.img-fundo{
-    height: 100vh;
-    width: auto;
-    object-fit: cover;
+.img-fundo {
+  height: 100vh;
+  width: auto;
+  object-fit: cover;
 }
 
-/* FRENTE DO CARTÃO */
-.frente-card{
+.cards-wrapper {
+  position: absolute;
+  top: 15vh;
+  left: 6vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* CARTÕES */
+.card-front{
     position: absolute;
-    left: 12vw;
-    top: 15vh;
+    left: 5vw;
 }
 
-.info-card{
-    position: relative;
-    color: var(--text-card);
-    font-size: 1.2rem;
-}
-
-.logo-card{
+.card-back{
     position: absolute;
-    top: 25px;
-    left: 30px;
+    left: 15vw;
 }
 
-.num-card{
-    position: absolute;
-    bottom: 80px;
-    left: 30px;
-    font-size: 35px;
+.card {
+  position: relative;
+  color: var(--text-card);
+  width: 400px;
+  font-size: 1.2rem;
 }
 
-.nome-card{
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
+.card-bg {
+  width: 100%;
+  display: block;
 }
 
-.valid-card{
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
+.logo-card {
+  position: absolute;
+  top: 20px;
+  left: 25px;
 }
 
-/* TRÁS DO CARTÃO */
-.tras-card{
-    position: fixed;
-    left: 20vw;
-    bottom: 10vh;
+.num-card {
+  position: absolute;
+  bottom: 75px;
+  left: 25px;
+  font-size: 1.8rem;
 }
 
-.cvv-card{
-    position: absolute;
-    right: 60px;
-    top: 110px;
+.nome-card {
+  position: absolute;
+  bottom: 30px;
+  left: 25px;
 }
 
-/* LATERAL */
-
-.lateral{
-    display: flex;
-    align-items: center;
+.valid-card {
+  position: absolute;
+  bottom: 30px;
+  right: 25px;
 }
 
-.form-container{
-    position: absolute;
-    right: 10vw;
-    width: 30vw;
-    height: 500px;
-    background-color: antiquewhite;
+.cvv-card {
+  position: absolute;
+  top: 95px;
+  right: 50px;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+/* ÁREA DO FORMULÁRIO */
+.form-area {
+  display: flex;
+  align-items: center;
+  margin: 0 10vw 0 auto;
 }
 
-input{
-    border: 1px solid gray;
-    font-size: 1rem;
-    padding: 10px;
-    border-radius: 6px;
-    margin: 10px 0 40px 0;
+form {
+  background: var(--form-bg);
+  padding: 2rem;
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: rgba(0,0,0,0.2) 0px 4px 12px;
 }
 
-.inputs-bottom{
-    display: flex;
-    margin: 10px 0;
+label {
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.valid-sect{
-    width: 50%;
-}
-.validade{
-    display: flex;
+input {
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 20px;
 }
 
-.validade input{
-    width: 40%;
-    margin: 5px;
+.inputs-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.validade {
+  display: flex;
+  gap: 10px;
+}
+
+.validade input {
+  width: 60px;
 }
 
 .cvv-sect{
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
 }
-.cvv-sect input{
-    width: 90%;
-    margin: 5px;
+.cvv-sect input {
+    width: 150px;
 }
 
-.botao-confirm{
-    margin: 50px 0;
+/* BOTÃO */
+.botao-confirm {
+  padding: 12px;
+  margin-top: 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #1a1a57;
+  color: white;
 }
 
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    height: 260px;
+  }
+
+  .cards-wrapper {
+    flex-direction: row;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .form-area {
+    padding: 2rem 0;
+  }
+}
