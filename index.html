@@ -1,51 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Interactive card details form</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário Cartão Interativo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <main>
+    <img src="images/bg-main-desktop.png" alt="" class="img-fundo">
+    <div class="frente-card">
+      <div class="info-card">
+        <img src="images/bg-card-front.png" alt="">
+        <img src="images/card-logo.svg" alt="" class="logo-card">
+        <p class="num-card">0000 0000 0000 0000</p>
+        <p class="nome-card">SEU NOME</p>
+        <p class="valid-card">00/00</p>
+      </div>
+    </div>
+    <div class="tras-card">
+      <div class="info-card">
+        <img src="images/bg-card-back.png" alt="">
+        <p class="cvv-card">000</p>
+      </div>
+      
 
-  0000 0000 0000 0000
-  Jane Appleseed
-  00/00
+    </div>
+    <section class="lateral">
+      <div>
+        <form action="">
 
-  000
+        </form>
+      </div>
+    </section>
 
-  Cardholder Name
-  e.g. Jane Appleseed
-
-  Card Number
-  e.g. 1234 5678 9123 0000
-
-  Exp. Date (MM/YY)
-  MM
-  YY
-
-  CVC
-  e.g. 123
-
-  Confirm
-
-  <!-- Completed state start -->
-
-  Thank you!
-  We've added your card details
-  Continue
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  </main>
 </body>
 </html>
