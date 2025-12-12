@@ -1,168 +1,186 @@
-// Validação e Interação NOME CARTÃO
-const nome_card = document.getElementById("nome-inter");
-const input_nome = document.getElementById("input-nome");
+// -------------------------------
+// UTILITÁRIOS
+// -------------------------------
 
-input_nome.addEventListener('input', function(){
-    const texto_input = event.target.value.toUpperCase();
-    const alert = document.getElementById("alert-name");
+// Atualiza o texto da interface ou coloca valor padrão
+function atualizarTexto(el, valor, padrao) {
+    el.textContent = valor || padrao;
+}
 
-    if(texto_input.length < 25){
-        if(texto_input.length < 5){
-            alert.textContent = "Nome precisa ter no mínimo 5 caracteres";
-        }else{
-            alert.textContent = '';
-            if(texto_input != ''){
-                nome_card.textContent = texto_input;
-            }else{
-                nome_card.textContent = 'SEU NOME';
-            }    
-        }
-        
-    }
-})
+// Mostra mensagem de erro
+function setErro(el, msg) {
+    el.textContent = msg;
+}
 
+// Limpa mensagem de erro
+function limparErro(el) {
+    el.textContent = "";
+}
+
+
+// -------------------------------
+// MÁSCARAS
+// -------------------------------
+
+// Nome: somente letras e espaços
 function mascaraNome(campo) {
-    let v = campo.value;
-
-    v = v.replace(/[^A-Za-zÀ-ÿ\s]/g, ''); // Remove tudo que NÃO é letra ou espaço
-
-    campo.value = v;
+    campo.value = campo.value.replace(/[^A-Za-zÀ-ÿ\s]/g, "");
 }
 
-// Validação e Interação NÚMERO CARTÃO
-
-const num_card = document.getElementById('num-card-inter');
-const input_num_card = document.getElementById('input-num-card');
-
-input_num_card.addEventListener('input', function(){
-    const texto_input = event.target.value;
-    const alert = document.getElementById("alert-num")
-
-    if(texto_input != ''){
-        if(texto_input.length<19){
-            alert.textContent = "Número do cartão precisa ter 16 números"
-        }else if(texto_input.length>19){
-            alert.textContent = "Apenas 16 números"
-        }else{
-            num_card.textContent = texto_input;
-            alert.textContent = ''
-        }
-    }else{
-        num_card.textContent = "0000 0000 0000 0000"
-    }
-})
-
+// Número do cartão: 4 em 4
 function mascaraCartao(campo) {
-    let v = campo.value;
-
-    v = v.replace(/\D/g, '');                // Remove tudo que não é dígito
-    v = v.replace(/(\d{4})(?=\d)/g, '$1 ');  // Insere espaço a cada 4 dígitos
-
-    campo.value = v.trim();                 
+    let v = campo.value.replace(/\D/g, "");
+    campo.value = v.match(/.{1,4}/g)?.join(" ") || "";
 }
 
+// -------------------------------
+// CAMPOS
+// -------------------------------
 
-// Validação e Interação VALIDADE CARTÃO
+const nomeCardEl   = document.getElementById("nome-inter");
+const numCardEl    = document.getElementById("num-card-inter");
+const monthCardEl  = document.getElementById("month-valid-inter");
+const yearCardEl   = document.getElementById("year-valid-inter");
+const cvvCardEl    = document.getElementById("cvv-card-inter");
 
-const month_valid = document.getElementById("month-valid-inter");
-const input_month = document.getElementById("input-month-card");
-const year_valid = document.getElementById("year-valid-inter")
-const input_year = document.getElementById("input-year-card");
+const inputNome      = document.getElementById("input-nome");
+const inputNumCard   = document.getElementById("input-num-card");
+const inputMonth     = document.getElementById("input-month-card");
+const inputYear      = document.getElementById("input-year-card");
+const inputCVV       = document.getElementById("input-cvv-card");
 
-
-input_month.addEventListener('input', function(){
-    const texto_input = event.target.value; 
-    const alert = document.getElementById("alert-month")
-
-    if(texto_input.length < 3){
-        if(texto_input != ''){
-            if(texto_input > 0 && texto_input < 13){
-                if(texto_input.length <2){
-                    month_valid.textContent = '0' + texto_input
-                }else{
-                    month_valid.textContent = texto_input;
-                }
-                
-                    alert.textContent = '';
-                
-                
-            }else{
-                alert.textContent = "Mês Inválido";
-            }
-        }else{
-            month_valid.textContent = '00'
-        }
-    }else{
-        alert.textContent = "Mês Inválido";
-    }
-})
-
-input_year.addEventListener('input', function(){
-    const texto_input = event.target.value;
-    const alert = document.getElementById("alert-year")
-
-    if(texto_input.length < 3){
-        if(texto_input != ''){
-            if(texto_input > 0 && texto_input < 99){
-                if(texto_input.length < 2){
-                    year_valid.textContent = '0' + texto_input;
-                }else{
-                    year_valid.textContent = texto_input;
-                }
-                
-                alert.textContent = '';
-                
-            }else{
-                alert.textContent = "Data Inválida";
-            }
-        }else{
-            year_valid.textContent = '00'
-        }
-    }else{
-        alert.textContent = "Ano Inválido";
-    }
-})
-
-// Validação e Interação CVV CARTÃO
-const cvv_card = document.getElementById('cvv-card-inter');
-const input_cvv_card = document.getElementById('input-cvv-card');
-
-input_cvv_card.addEventListener('input', function(){
-    const texto_input = event.target.value;
-    const alert = document.getElementById("alert-cvv")
-
-    if(texto_input != ''){
-        
-        if(texto_input.length<3){
-            alert.textContent = "Precisa ter 3 números"
-        }else if(texto_input.length>3){
-            alert.textContent = "Apenas 3 números"
-        }else{
-            cvv_card.textContent = texto_input;
-            alert.textContent = ''
-        }
-    }else{
-        cvv_card.textContent = "000"
-    }
-})
+// Alertas
+const alertName  = document.getElementById("alert-name");
+const alertNum   = document.getElementById("alert-num");
+const alertMonth = document.getElementById("alert-month");
+const alertYear  = document.getElementById("alert-year");
+const alertCVV   = document.getElementById("alert-cvv");
 
 
-// Validação Formulário
+// -------------------------------
+// VALIDAÇÃO EM TEMPO REAL
+// -------------------------------
 
-const form = document.getElementById("form");
-form.addEventListener("submit", function(){
-    const alertName = document.getElementById("alert-name");
-    
-    const nome = input_nome.value.trim();
-    const num = input_num_card
-    let isValid = true;
+// NOME
+inputNome.addEventListener("input", e => {
+    mascaraNome(e.target);
+    const nome = e.target.value.trim().toUpperCase();
 
-    if(nome === '' || nome.length < 5){
-        alertName.textContent = "Nome precisa ter no mínimo 5 caracteres.";
-        isValid = false;
+    if (nome.length < 5) {
+        setErro(alertName, "Nome precisa ter no mínimo 5 caracteres.");
+    } else {
+        limparErro(alertName);
     }
 
-    if(!isValid){
-        event.preventDefault();
+    atualizarTexto(nomeCardEl, nome, "SEU NOME");
+});
+
+// NÚMERO DO CARTÃO
+inputNumCard.addEventListener("input", e => {
+    mascaraCartao(e.target);
+    const valor = e.target.value;
+
+    if (valor.length < 19) {
+        setErro(alertNum, "Número do cartão precisa ter 16 números.");
+    } else {
+        limparErro(alertNum);
     }
-})
+
+    atualizarTexto(numCardEl, valor, "0000 0000 0000 0000");
+});
+
+// MÊS
+inputMonth.addEventListener("input", e => { 
+    let m = e.target.value.replace(/\D/g, "");    // só números
+    m = m.replace(/^0+/, "");                     // remove zeros à esquerda
+
+    if (m === "") {
+        atualizarTexto(monthCardEl, "00");
+        return setErro(alertMonth, "Mês inválido.");
+    }
+
+    if (m < 1 || m > 12) {
+        return setErro(alertMonth, "Mês inválido.");
+    }
+
+    limparErro(alertMonth);
+    atualizarTexto(monthCardEl, m.padStart(2, "0")); // exibe com zero à esquerda
+});
+
+
+// ANO
+inputYear.addEventListener("input", e => {
+    let y = e.target.value.replace(/\D/g, "");    // só números
+    y = y.replace(/^0+/, "");                     // remove zeros à esquerda
+
+    if (y === "") {
+        atualizarTexto(yearCardEl, "00");
+        return setErro(alertYear, "Ano inválido.");
+    }
+
+    if (y < 1 || y > 99) {
+        return setErro(alertYear, "Ano inválido.");
+    }
+
+    limparErro(alertYear);
+    atualizarTexto(yearCardEl, y.padStart(2, "0")); // exibe com zero à esquerda
+});
+
+
+// CVV
+inputCVV.addEventListener("input", e => {
+    let cvv = e.target.value.replace(/\D/g, "");
+    e.target.value = cvv;
+
+    if (cvv.length !== 3) {
+        setErro(alertCVV, "Precisa ter 3 números.");
+    } else {
+        limparErro(alertCVV);
+    }
+
+    atualizarTexto(cvvCardEl, cvv, "000");
+});
+
+
+// -------------------------------
+// VALIDAÇÃO FINAL DO FORMULÁRIO
+// -------------------------------
+
+document.getElementById("form").addEventListener("submit", e => {
+    let valid = true;
+
+    // Nome
+    if (inputNome.value.trim().length < 5) {
+        setErro(alertName, "Nome precisa ter no mínimo 5 caracteres.");
+        valid = false;
+    }
+
+    // Número do cartão
+    if (inputNumCard.value.length !== 19) {
+        setErro(alertNum, "Número do cartão inválido.");
+        valid = false;
+    }
+
+    // Mês
+    const m = Number(inputMonth.value);
+    if (m < 1 || m > 12) {
+        setErro(alertMonth, "Mês inválido.");
+        valid = false;
+    }
+
+    // Ano
+    const y = Number(inputYear.value);
+    if (y < 0 || y > 99) {
+        setErro(alertYear, "Ano inválido.");
+        valid = false;
+    }
+
+    // CVV
+    if (inputCVV.value.length !== 3) {
+        setErro(alertCVV, "CVV inválido.");
+        valid = false;
+    }
+
+    // Impede o envio se houver erro
+    if (!valid) e.preventDefault();
+});
