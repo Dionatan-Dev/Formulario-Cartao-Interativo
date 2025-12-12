@@ -202,23 +202,85 @@ input {
 }
 
 /* RESPONSIVIDADE */
-@media (max-width: 900px) {
+@media (max-width: 1150px) {
   .layout {
     grid-template-columns: 1fr;
   }
 
   .sidebar {
-    height: 260px;
+    height: 240px;
+    background-image: url(images/bg-main-mobile.png);
+    width: 100vw;
   }
 
   .cards-wrapper {
-    flex-direction: row;
+    flex-direction: column-reverse;
     top: 20px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-58%);
+    border: 2px solid red;
+    width: 100vw;
+    align-items: center;
+  }
+
+  .card-front{
+    top: -15vh;
+    z-index: 1;
+  }
+
+  .card {
+    width: 350px;
+    font-size: 1rem;
+  }
+
+  .logo-card{
+    width: 75px;
+  }
+
+  .nome-card{
+    bottom: 3vh;
+  }
+
+  .data-valid{
+    bottom: 3vh;
+  }
+
+  .num-card{
+    font-size: 1.6rem;
+    bottom: 10vh;
   }
 
   .form-area {
-    padding: 2rem 0;
+    margin: 20vh auto 0 auto;
   }
+}
+
+
+@media (max-width: 550px) {
+  .card {
+    width: 300px;
+    font-size: .8rem;
+  }
+
+  .logo-card{
+    width: 50px;
+  }
+
+  .nome-card{
+    bottom: 2vh;
+  }
+
+  .data-valid{
+    bottom: 2vh;
+  }
+
+  .num-card{
+    font-size: 1.4rem;
+    bottom: 8vh;
+  }
+
+  .form-area {
+    margin: 10vh auto 0 auto;
+  }
+  
 }
