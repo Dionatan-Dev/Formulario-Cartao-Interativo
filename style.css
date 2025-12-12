@@ -24,11 +24,6 @@
   background-image: url(images/bg-main-desktop.png);
 }
 
-.img-fundo {
-  height: 100vh;
-  width: auto;
-  object-fit: cover;
-}
 
 .cards-wrapper {
   position: absolute;
@@ -56,6 +51,8 @@
   color: var(--text-card);
   width: 400px;
   font-size: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 12px 12px 30px  rgba(40, 40, 40, 0.516);
 }
 
 .card-bg {
@@ -82,7 +79,8 @@
   left: 25px;
 }
 
-.valid-card {
+.data-valid{
+  display: flex;
   position: absolute;
   bottom: 30px;
   right: 25px;
@@ -102,16 +100,15 @@
 }
 
 form {
-  background: var(--form-bg);
   padding: 2rem;
   width: 380px;
   display: flex;
   flex-direction: column;
   border-radius: 12px;
-  box-shadow: rgba(0,0,0,0.2) 0px 4px 12px;
 }
 
 label {
+  color: #616161;
   font-size: 0.85rem;
   margin-bottom: 5px;
   font-weight: bold;
@@ -156,9 +153,15 @@ input {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background: #1a1a57;
+  background: #3f1a57;
   color: white;
 }
+
+.alert{
+  font-size: small;
+  color: red;
+}
+
 
 /* RESPONSIVIDADE */
 @media (max-width: 900px) {

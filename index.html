@@ -15,45 +15,56 @@
         <figure class="card card-front">
           <img src="images/bg-card-front.png" alt="" class="card-bg">
           <img src="images/card-logo.svg" alt="" class="logo-card">
-          <p class="num-card">0000 0000 0000 0000</p>
-          <p class="nome-card">SEU NOME</p>
-          <p class="valid-card">00/00</p>
+          <p class="num-card" id="num-card-inter">0000 0000 0000 0000</p>
+          <p class="nome-card" id="nome-inter">SEU NOME</p>
+          <div class="data-valid">
+            <p id="month-valid-inter">00</p>
+            <p>/</p>
+            <p id="year-valid-inter">00</p>
+          </div>
         </figure>
 
         <figure class="card card-back">
           <img src="images/bg-card-back.png" alt="" class="card-bg">
-          <p class="cvv-card">000</p>
+          <p class="cvv-card" id="cvv-card-inter">000</p>
         </figure>
       </section>
     </aside>
 
     <section class="form-area">
-      <form>
+      <form id="form">
         <label>NOME NO CARTÃO</label>
-        <input type="text" placeholder="ex: João da Silva">
+        <input type="text" placeholder="ex: João da Silva" id="input-nome" oninput="mascaraNome(this)" required>
+        <p class="alert" id="alert-name"></p>
 
         <label>NÚMERO DO CARTÃO</label>
-        <input type="text" placeholder="ex: 1234 5678 9012 3456">
+        <input type="text" placeholder="ex: 1234 5678 9012 3456" id="input-num-card" oninput="mascaraCartao(this)" required>
+        <p class="alert" id="alert-num"></p>
 
         <div class="inputs-bottom">
           <div class="valid-sect">
             <label>VALIDADE (MM/AA)</label>
             <div class="validade">
-              <input type="number" placeholder="MM">
-              <input type="number" placeholder="AA">
+              <input type="number" placeholder="MM" min="1" max="12" id="input-month-card" required>
+              <input type="number" placeholder="AA" min="00" max="99" id="input-year-card" required>
             </div>
+            <p class="alert" id="alert-month"></p>
+            <p class="alert" id="alert-year"></p>
           </div>
 
           <div class="cvv-sect">
-            <label>CVC</label>
-            <input type="number" placeholder="ex: 123">
+            <label>CVV</label>
+            <input type="number" placeholder="ex: 123" min="000" max="999" id="input-cvv-card" required>
+            <p class="alert" id="alert-cvv"></p>
           </div>
         </div>
 
-        <button class="botao-confirm">CONFIRMAR</button>
+        <input type="submit" class="botao-confirm"></input>
       </form>
     </section>
 
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
