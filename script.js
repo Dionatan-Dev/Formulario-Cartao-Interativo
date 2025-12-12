@@ -17,6 +17,19 @@ function limparErro(el) {
     el.textContent = "";
 }
 
+// Mostra mensagem de sucesso
+function mensagemSucesso(){
+    form.classList.toggle('fade-in');
+    success.classList.toggle('fade-in');
+    form.classList.toggle('fade-out');
+    success.classList.toggle('fade-out');
+
+    setTimeout(() => {
+        form.classList.toggle("hidden");
+        success.classList.toggle("hidden");
+    }, 300);
+}
+
 
 // -------------------------------
 // MÁSCARAS
@@ -49,6 +62,9 @@ const inputMonth     = document.getElementById("input-month-card");
 const inputYear      = document.getElementById("input-year-card");
 const inputCVV       = document.getElementById("input-cvv-card");
 
+const form      = document.getElementById('form');
+const success   = document.getElementById("success");
+
 // Alertas
 const alertName  = document.getElementById("alert-name");
 const alertNum   = document.getElementById("alert-num");
@@ -80,7 +96,7 @@ inputNumCard.addEventListener("input", e => {
     mascaraCartao(e.target);
     const valor = e.target.value;
 
-    if (valor.length < 19) {
+    if (valor.length !== 19) {
         setErro(alertNum, "Número do cartão precisa ter 16 números.");
     } else {
         limparErro(alertNum);
@@ -182,5 +198,10 @@ document.getElementById("form").addEventListener("submit", e => {
     }
 
     // Impede o envio se houver erro
-    if (!valid) e.preventDefault();
+    if(!valid){
+        e.preventDefault();  
+    }else{
+        e.preventDefault();
+        mensagemSucesso();
+    }
 });

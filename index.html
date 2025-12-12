@@ -32,7 +32,7 @@
     </aside>
 
     <section class="form-area">
-      <form id="form">
+      <form id="form" class="fade-in">
         <label>NOME NO CARTÃO</label>
         <input type="text" placeholder="ex: João da Silva" id="input-nome" oninput="mascaraNome(this)" required>
         <p class="alert" id="alert-name"></p>
@@ -61,6 +61,14 @@
 
         <input type="submit" class="botao-confirm"></input>
       </form>
+
+      <!-- Sucesso ao enviar formulário -->
+       <div class="submit-success hidden fade-out" id="success">
+        <img src="images/icon-complete.svg" alt="Ícone de Sucesso">
+        <h1>MUITO OBRIGADO!</h1>
+        <p>Seus dados do cartão foram adicionados</p>
+        <a href="#" class="botao-confirm" onclick="mensagemSucesso()">Continuar</a>
+       </div>
     </section>
 
   </main>
