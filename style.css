@@ -218,7 +218,6 @@ input {
     top: 20px;
     left: 50%;
     transform: translateX(-58%);
-    border: 2px solid red;
     width: 100vw;
     align-items: center;
   }
